@@ -1,6 +1,5 @@
-package ru.netology.delivery.data.ru.netology.delivery.test;
+package ru.netology.delivery.test;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
-
+import static com.codeborne.selenide.Selenide.$;
 
 public class DeliveryTest {
 
@@ -48,10 +47,10 @@ public class DeliveryTest {
         $("[data-test-id=date] input").setValue(date2);
         $(byText("Запланировать")).click();
         $("[data-test-id='success-notification']").should(visible, Duration.ofSeconds(15));
-        $x("//button[@class='button button_view_extra button_size_s button_theme_alfa-on-white']").click();
+        $(byText("Перепланировать")).click();
         $("[data-test-id='success-notification']").should(matchText(date2), Duration.ofSeconds(15));
-
 
 
     }
 }
+
